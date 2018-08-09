@@ -1,13 +1,32 @@
-node('master') {
+pipeline {
+    agent any
 
-	def MVNHOME = tool 'Maven'
-	
-stage ('checkout code'){
-	checkout scm
-}
-	
-stage ('build'){
-	bat "${MVNHOME}/bin/mvn clean install"
-}
+    stages {
+        stage ('Compile Stage') {
 
+            steps {
+                withMaven(maven : 'Maven') {
+                    bat 'mvn clean compile'
+                }
+            }
+        }
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    bat 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'Maven') {
+                    bat 'mvn deploy'
+                }
+            }
+        }
+    }
 }
