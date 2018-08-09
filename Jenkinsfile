@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        stage ('build'){
+	        sh "${MVNHOME}/bin/mvn clean install"
+        }
         stage ('Compile Stage') {
 
             steps {
@@ -10,6 +13,7 @@ pipeline {
                 }
             }
         }
+        
 
         stage ('Testing Stage') {
 
