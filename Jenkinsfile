@@ -7,7 +7,7 @@ stage ('checkout code'){
 }
 	
 stage ('build'){
-	sh "${MVNHOME}/bin/mvn clean install"
+	bat "${MVNHOME}/bin/mvn clean install"
 }
 
 }
