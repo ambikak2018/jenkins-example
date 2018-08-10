@@ -22,7 +22,7 @@ pipeline {
             steps {
                 withMaven(maven : 'Maven') {
                     //bat 'mvn deploy'
-                    bat 'cp target/*.jar http://localhost:8080/'
+                    bat 'copy target/*.jar http://localhost:8080/'
                 }
             }
         }
