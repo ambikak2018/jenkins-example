@@ -10,7 +10,6 @@ pipeline {
                 }
             }
         }
-
         stage ('Testing Stage') {
 
             steps {
@@ -19,8 +18,6 @@ pipeline {
                 }
             }
         }
-
-
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'Maven') {
