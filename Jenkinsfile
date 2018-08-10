@@ -21,7 +21,8 @@ pipeline {
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'Maven') {
-                    bat 'mvn deploy'
+                    //bat 'mvn deploy'
+                    bat 'cp target/*.jar http://localhost:8080/'
                 }
             }
         }
