@@ -19,10 +19,14 @@ pipeline {
             }
         }
         stage ('Test Cases Execution'){
-	        bat "${MVNHOME}/bin/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test"
+		steps{
+	        	bat "${MVNHOME}/bin/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test"
+		}
         }
         stage ('Archive Artifacts'){
-	        archiveArtifacts artifacts: 'target/*.war'
+		steps{
+	        	archiveArtifacts artifacts: 'target/*.war'
+		}
         }
         stage ('Deployment Stage') {
             steps {
